@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Zidan Mubarok Web Developer showcasing skills, projects, and experience.">
+    <link rel="shortcut icon" href="assets/img/logo.png" type="image/x-icon">
+    <meta name="google-site-verification" content="hYDWkHW9utSzegvLKpd0XvNHnco7BpMnuSlbLO4D1I0" />
+    <!-- ✅ META SEO YANG DIOPTIMALKAN -->
+    <meta name="author" content="Zidan Mubarok" />
+    <meta name="description"
+        content="Portofolio Zidan Mubarok, seorang Web Developer yang bersemangat dalam membangun solusi web yang kuat dan berdampak. Lihat proyek, keahlian, dan pengalaman saya di sini." />
+    <meta name="keywords"
+        content="Zidan Mubarok, web developer, portofolio, front-end developer, back-end developer, programmer, contoh proyek web, jasa pembuatan website" />
+    <link rel="canonical" href="https://zidanmubarok.github.io/" /> <!-- Ganti dengan URL Anda -->
+
+    <!-- ✅ OPEN GRAPH META TAGS (untuk Facebook, LinkedIn, dll) -->
+    <meta property="og:title" content="Zidan Mubarok | Portofolio Web Developer" />
+    <meta property="og:description"
+        content="Portofolio Zidan Mubarok, seorang Web Developer yang bersemangat dalam membangun solusi web yang kuat dan berdampak." />
+    <meta property="og:image" content="https://zidanmubarok.github.io/assets/img/myfoto.png" />
+    <!-- Ganti dengan URL gambar Anda -->
+    <meta property="og:url" content="https://zidanmubarok.github.io/" /> <!-- Ganti dengan URL Anda -->
+    <meta property="og:type" content="website" />
+
+    <!-- ✅ TWITTER CARD META TAGS -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Zidan Mubarok | Portofolio Web Developer" />
+    <meta name="twitter:description"
+        content="Portofolio Zidan Mubarok, seorang Web Developer yang bersemangat dalam membangun solusi web yang kuat dan berdampak." />
+    <meta name="twitter:image" content="https://zidanmubarok.github.io/assets/img/myfoto.png" />
+    <!-- Ganti dengan URL gambar Anda -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="assets/img/logo.png" />
+
+    <title>Zidan Mubarok Web Developer</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <!-- Feather Icons CDN for lightweight icons -->
+    <script src="https://unpkg.com/feather-icons"></script>
+    <!-- Dev Icons CDN -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
+</head>
+
+<body>
+    <!-- Overlay for offcanvas menu -->
+    <div class="overlay" id="overlay" onclick="closeOffcanvas()"></div>
+
+    <!-- Offcanvas Menu -->
+    <div class="offcanvas" id="offcanvas">
+        <button class="close-btn" onclick="closeOffcanvas()">
+            <i data-feather="x"></i>
+        </button>
+        <ul class="nav-links-mobile">
+            <li onclick="scrollToSection('hero'); closeOffcanvas()">Home</li>
+            <li onclick="scrollToSection('about'); closeOffcanvas()">About</li>
+            <li onclick="scrollToSection('skills'); closeOffcanvas()">Skills</li>
+            <li onclick="scrollToSection('projects'); closeOffcanvas()">Projects</li>
+            <li onclick="scrollToSection('experience'); closeOffcanvas()">Experience</li>
+            <li onclick="scrollToSection('contact'); closeOffcanvas()">Contact</li>
+        </ul>
+    </div>
+
+    <header>
+        <nav>
+            <div class="logo">ZM</div>
+            <ul class="nav-links">
+                <li onclick="scrollToSection('hero')">Home</li>
+                <li onclick="scrollToSection('about')">About</li>
+                <li onclick="scrollToSection('skills')">Skills</li>
+                <li onclick="scrollToSection('projects')">Projects</li>
+                <li onclick="scrollToSection('experience')">Experience</li>
+                <li onclick="scrollToSection('contact')">Contact</li>
+            </ul>
+            <div style="display: flex; align-items: center;">
+                <button class="hamburger" id="hamburger" onclick="toggleOffcanvas()">
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                </button>
+                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle Dark Mode">
+                    <i data-feather="moon"></i>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="profile-photo">
+            <!-- Pastikan path gambar benar dan alt deskriptif -->
+            <img src="assets/img/siluet.jpg" alt="Foto Profil Zidan Mubarok" />
+        </div>
+        <!-- Gunakan <h1> hanya sekali per halaman untuk judul utama -->
+        <h1 class="hero-title">Zidan Mubarok</h1>
+        <p class="hero-subtitle">Web Developer yang bersemangat dalam menciptakan website modern dan responsif.</p>
+        <!-- <button onclick="scrollToSection('projects')" class="cta-button">Lihat Proyek Saya</button> -->
+        <!-- GANTI NOMOR WHATSAPP DI BAWAH INI (gunakan format 628xxxx) -->
+        <div class="contact-ctas">
+            <a href="https://wa.me/6281234567890" target="_blank" class="cta-button whatsapp">
+                <i data-feather="message-circle" style="margin-right: 8px;"></i>Hubungi Saya
+            </a>
+        </div>
+    </section>
+
+    <!-- Section About -->
+    <section id="about">
+        <h2>About Me</h2>
+        <div class="about-content">
+            <div class="about-image">
+                <img src="assets/img/myfoto.png" alt="Foto close-up Zidan Mubarok">
+            </div>
+            <div class="about-text">
+                <h3>Web Developer &amp; Creative Problem Solver</h3>
+                <p>
+                    Halo! Saya Zidan Mubarok, seorang web developer dengan hasrat untuk menciptakan pengalaman digital
+                    yang
+                    bersih, modern, dan intuitif. Saya percaya bahwa sebuah website yang hebat adalah perpaduan antara
+                    desain yang indah, fungsionalitas yang solid, dan performa yang secepat kilat.
+                </p>
+                <!-- <div class="about-tech">
+                    <p>Beberapa teknologi yang saya kuasai:</p>
+                    <ul class="tech-list">
+                        <li><i data-feather="chevrons-right"></i> JavaScript (ES6+)</li>
+                        <li><i data-feather="chevrons-right"></i> HTML5</li>
+                        <li><i data-feather="chevrons-right"></i> CSS3 & Sass</li>
+                        <li><i data-feather="chevrons-right"></i> Git & GitHub</li>
+                        <li><i data-feather="chevrons-right"></i> Figma</li>
+                    </ul>
+                </div> -->
+
+                <a href="assets/cv/pdf.pdf" class="cta-button" download>
+                    <i data-feather="download" style="margin-right: 8px;"></i> Download CV
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Skils -->
+    <section id="skills">
+        <h2>My Professional Skills</h2>
+        <div class="skills-container">
+            <!-- Kategori Front-End -->
+            <div class="skill-category">
+                <h3>Front-End Development</h3>
+                <div class="skills-grid">
+                    <div class="skill-item"><i class="devicon-html5-plain colored"></i><span>HTML5</span></div>
+                    <div class="skill-item"><i class="devicon-css3-plain colored"></i><span>CSS3</span></div>
+                    <div class="skill-item"><i class="devicon-javascript-plain colored"></i><span>JavaScript</span>
+                    </div>
+                    <div class="skill-item"><i class="devicon-bootstrap-plain colored"></i><span>Bootstrap</span></div>
+                    <div class="skill-item"><i class="devicon-tailwindcss-plain colored"></i><span>Tailwind CSS</span>
+                    </div>
+                    <div class="skill-item"><i class="devicon-react-original colored"></i><span>React</span></div>
+                </div>
+            </div>
+
+            <!-- Kategori Back-End -->
+            <div class="skill-category">
+                <h3>Back-End &amp; Database</h3>
+                <div class="skills-grid">
+                    <div class="skill-item"><i class="devicon-php-plain colored"></i><span>PHP</span></div>
+                    <div class="skill-item"><i class="devicon-laravel-plain colored"></i><span>Laravel</span></div>
+                    <div class="skill-item"><i class="devicon-codeigniter-plain colored"></i><span>CodeIgniter</span>
+                    </div>
+                    <div class="skill-item"><i class="devicon-mysql-plain-wordmark colored"></i><span>MySQL</span></div>
+                    <div class="skill-item"><i class="devicon-nodejs-plain colored"></i><span>Node.js</span></div>
+                    <div class="skill-item"><i class="devicon-express-original colored"></i><span>Express</span></div>
+                </div>
+            </div>
+
+            <!-- Kategori Tools -->
+            <div class="skill-category">
+                <h3>Tools &amp; Workflow</h3>
+                <div class="skills-grid">
+                    <div class="skill-item"><i class="devicon-git-plain colored"></i><span>Git</span></div>
+                    <div class="skill-item"><i class="devicon-github-original colored"></i><span>GitHub</span></div>
+                    <div class="skill-item"><i class="devicon-vscode-plain colored"></i><span>VS Code</span></div>
+                    <div class="skill-item"><i class="devicon-figma-plain colored"></i><span>Figma</span></div>
+                    <div class="skill-item"><i class="devicon-npm-original-wordmark colored"></i><span>NPM</span></div>
+                    <div class="skill-item"><i class="devicon-webpack-plain colored"></i><span>Webpack</span></div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Section Projects -->
+    <section id="projects">
+        <h2>My Featured Projects</h2>
+        <div class="projects-grid">
+            <!-- CARD PROYEK 1 -->
+            <div class="project-card">
+                <div class="project-image">
+                    <img src="assets/img/desain1.jpg" alt="Project 1">
+                </div>
+                <div class="project-info">
+                    <h3 class="project-title">Nama Proyek Keren</h3>
+                    <p class="project-description">
+                        Deskripsi singkat dan menarik tentang proyek ini. Jelaskan tujuannya, teknologi yang digunakan,
+                        dan
+                        peran Anda dalam pengembangannya.
+                    </p>
+                    <div class="project-tech">
+                        <span>HTML</span>
+                        <span>CSS</span>
+                        <span>JavaScript</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" target="_blank" class="project-link">
+                            <i data-feather="external-link"></i> Live Demo
+                        </a>
+                        <a href="#" target="_blank" class="project-link">
+                            <i data-feather="github"></i> Source Code
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CARD PROYEK 2 -->
+            <div class="project-card">
+                <div class="project-image">
+                    <img src="assets/img/desain2.jpg" alt="Project 2">
+                </div>
+                <div class="project-info">
+                    <h3 class="project-title">Aplikasi Web Inovatif</h3>
+                    <p class="project-description">
+                        Ini adalah proyek lain yang menunjukkan keahlian Anda dalam framework back-end seperti Laravel
+                        atau
+                        CodeIgniter.
+                    </p>
+                    <div class="project-tech">
+                        <span>Laravel</span>
+                        <span>PHP</span>
+                        <span>MySQL</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" target="_blank" class="project-link">
+                            <i data-feather="external-link"></i> Live Demo
+                        </a>
+                        <a href="#" target="_blank" class="project-link">
+                            <i data-feather="github"></i> Source Code
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CARD PROYEK 3 -->
+            <div class="project-card">
+                <div class="project-image">
+                    <img src="assets/img/desain3.jpg" alt="Project 3">
+                </div>
+                <div class="project-info">
+                    <h3 class="project-title">Portofolio Klien</h3>
+                    <p class="project-description">
+                        Contoh website yang dibuat untuk klien, menunjukkan kemampuan Anda dalam menerjemahkan kebutuhan
+                        bisnis menjadi produk digital.
+                    </p>
+                    <div class="project-tech">
+                        <span>React</span>
+                        <span>TailwindCSS</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" target="_blank" class="project-link">
+                            <i data-feather="external-link"></i> Live Demo
+                        </a>
+                        <a href="#" target="_blank" class="project-link">
+                            <i data-feather="github"></i> Source Code
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Section Experience -->
+    <section id="experience">
+        <h2>My Journey &amp; Experience</h2>
+        <div class="timeline">
+
+            <!-- ITEM PENGALAMAN 1 -->
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <span class="timeline-date">Jan 2024 - Des 2024</span>
+                    <h3>Web Developer Intern</h3>
+                    <p class="timeline-company">Tech Corp, Jakarta</p>
+                    <ul>
+                        <li>Berkontribusi dalam pengembangan dan pemeliharaan website perusahaan menggunakan Laravel.
+                        </li>
+                        <li>Membantu tim front-end dalam mengimplementasikan desain responsif dengan CSS dan JavaScript.
+                        </li>
+                        <li>Belajar dan menerapkan praktik terbaik dalam version control menggunakan Git.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- ITEM PENGALAMAN 2 -->
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <span class="timeline-date">2021 - 2023</span>
+                    <h3>Freelance Web Developer</h3>
+                    <p class="timeline-company">Proyek Mandiri</p>
+                    <ul>
+                        <li>Membangun beberapa website portofolio dan company profile untuk klien kecil.</li>
+                        <li>Mengelola proyek dari awal hingga akhir, termasuk desain UI/UX sederhana dan deployment.
+                        </li>
+                        <li>Fokus pada pembuatan website statis yang cepat dan ringan dengan HTML, CSS, dan JS.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- ITEM PENDIDIKAN (CONTOH) -->
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <span class="timeline-date">2019 - 2023</span>
+                    <h3>Sarjana Teknik Informatika</h3>
+                    <p class="timeline-company">Universitas Koding Indonesia</p>
+                    <ul>
+                        <li>Mempelajari dasar-dasar ilmu komputer, algoritma, dan struktur data.</li>
+                        <li>Aktif dalam kelompok studi pengembangan web dan mengerjakan beberapa proyek akademis.</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Section Contact -->
+    <section id="contact">
+        <h2>Get in Touch</h2>
+        <div class="contact-container">
+            <div class="contact-info">
+                <h3>Let's Talk!</h3>
+                <p>
+                    Punya pertanyaan atau proyek yang ingin didiskusikan? Jangan ragu untuk menghubungi saya. Saya
+                    selalu
+                    terbuka untuk peluang baru dan kolaborasi.
+                </p>
+                <div class="info-item">
+                    <i data-feather="map-pin"></i>
+                    <span>Kunjang, Kediri, Jawa Timur, Indonesia</span>
+                </div>
+                <div class="info-item">
+                    <i data-feather="mail"></i>
+                    <!-- GANTI DENGAN EMAIL ANDA -->
+                    <a href="mailto:zidanmubarok2007@gmail.com">zidanmubarok@gmail.com</a>
+                </div>
+                <div class="contact-ctas">
+                    <!-- GANTI NOMOR WHATSAPP ANDA (gunakan format 628xxxx) -->
+                    <a href="https://wa.me/6283174971993?text=Halo%20saya%20ingin%20bertanya" target="_blank"
+                        class="cta-button whatsapp">
+                        <i data-feather="message-circle"></i> WhatsApp Me
+                    </a>
+                </div>
+            </div>
+            <!-- <div class="contact-form">
+                <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Your Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="cta-button">Send Message</button>
+                </form>
+            </div> -->
+            <div class="contact-form">
+                <!-- Hapus action dan method, tambahkan id -->
+                <form id="contact-form">
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Your Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="cta-button">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- My Footer -->
+    <footer>
+        <div class="footer-container">
+            <!-- <div class="footer-brand">
+                Zidan Mubarok
+            </div> -->
+            <div class="footer-social">
+                <!-- GANTI '#' DENGAN LINK SOSIAL MEDIA ANDA -->
+                <a href="#" target="_blank" aria-label="GitHub"><i data-feather="github"></i></a>
+                <a href="#" target="_blank" aria-label="LinkedIn"><i data-feather="linkedin"></i></a>
+                <a href="#" target="_blank" aria-label="Instagram"><i data-feather="instagram"></i></a>
+                <a href="#" target="_blank" aria-label="Instagram"><i data-feather="phone-call"></i></a>
+                <a href="#" target="_blank" aria-label="Instagram"><i data-feather="facebook"></i></a>
+            </div>
+            <div class="footer-copy">
+                <small>&copy; 2025 Zidan Mubarok. All rights reserved.</small>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Script JS -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Inisialisasi Feather Icons
+            feather.replace();
+
+            // --- Offcanvas Menu Logic ---
+            const hamburger = document.getElementById('hamburger');
+            const offcanvas = document.getElementById('offcanvas');
+            const overlay = document.getElementById('overlay');
+            const mobileNavLinks = document.querySelectorAll('.nav-links-mobile li');
+
+            const toggleOffcanvas = () => {
+                offcanvas.classList.toggle('active');
+                overlay.classList.toggle('active');
+            };
+
+            const closeOffcanvas = () => {
+                offcanvas.classList.remove('active');
+                overlay.classList.remove('active');
+            };
+
+            hamburger.addEventListener('click', toggleOffcanvas);
+            overlay.addEventListener('click', closeOffcanvas);
+            document.querySelector('.close-btn').addEventListener('click', closeOffcanvas);
+
+            // --- Smooth Scroll Logic ---
+            const navLinks = document.querySelectorAll('.nav-links li, .nav-links-mobile li');
+
+            const scrollToSection = (sectionId) => {
+                const section = document.getElementById(sectionId);
+                if (section) {
+                    section.scrollIntoView({ behavior: 'smooth' });
+                }
+            };
+
+            navLinks.forEach(link => {
+                // Ambil ID section dari atribut onclick yang sudah ada
+                const sectionId = link.getAttribute('onclick').match(/'([^']+)'/)[1];
+                link.addEventListener('click', () => {
+                    scrollToSection(sectionId);
+                    if (offcanvas.classList.contains('active')) {
+                        closeOffcanvas();
+                    }
+                });
+            });
+
+            // --- Theme Toggle Logic ---
+            const themeToggle = document.getElementById('theme-toggle');
+            const html = document.documentElement;
+
+            const applyTheme = (theme) => {
+                if (theme === 'dark') {
+                    html.setAttribute('data-theme', 'dark');
+                    themeToggle.innerHTML = '<i data-feather="sun"></i>';
+                } else {
+                    html.removeAttribute('data-theme');
+                    themeToggle.innerHTML = '<i data-feather="moon"></i>';
+                }
+                feather.replace();
+            };
+
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            applyTheme(savedTheme);
+
+            themeToggle.addEventListener('click', () => {
+                const currentTheme = html.hasAttribute('data-theme') ? 'dark' : 'light';
+                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                localStorage.setItem('theme', newTheme);
+                applyTheme(newTheme);
+            });
+
+            // --- Contact Form Logic ---
+            const contactForm = document.getElementById('contact-form');
+
+            if (contactForm) {
+                contactForm.addEventListener('submit', function (event) {
+                    // 1. Mencegah form dari pengiriman standar
+                    event.preventDefault();
+
+                    // 2. Ambil data dari setiap input
+                    const name = document.getElementById('name').value;
+                    const email = document.getElementById('email').value;
+                    const message = document.getElementById('message').value;
+
+                    // 3. Siapkan data untuk link mailto:
+                    const recipientEmail = 'zidanm290907@gmail.com';
+                    const subject = `Pesan Portofolio dari ${name}`;
+
+                    // Gabungkan pesan dan email pengirim di body
+                    const body = `Halo,
+Nama saya ${name} (${email}).
+
+Saya ingin menyampaikan pesan berikut:
+--------------------------------
+${message}
+--------------------------------
+`;
+
+                    // 4. Buat dan aktifkan link mailto:
+                    // encodeURIComponent memastikan karakter spesial (seperti spasi atau baris baru) diformat dengan benar
+                    const mailtoLink = `mailto:${recipientEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+                    // Buka email client default pengguna
+                    window.location.href = mailtoLink;
+                });
+            }
+        });
+    </script>
+
+</body>
+
+</html>

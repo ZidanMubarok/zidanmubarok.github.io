@@ -1,0 +1,1032 @@
+/* ==========================================================================
+   1. VARIABLES & THEME SETUP
+   ========================================================================== */
+
+:root {
+    /* Colors */
+    --accent-color: #007bff;
+    --accent-color-darker: #0056b3;
+    --text-color: #212529;
+    --body-bg: #f8f9fa;
+    --header-bg: rgba(255, 255, 255, 0.85);
+    --card-bg: #ffffff;
+    --border-color: #dee2e6;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+
+    /* Typography */
+    --font-family-base: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+        Helvetica, Arial, sans-serif;
+
+    /* Spacing & Radius */
+    --border-radius: 8px;
+    --header-height: 70px;
+}
+
+[data-theme="dark"] {
+    --accent-color: #4dabf7;
+    --accent-color-darker: #228be6;
+    --text-color: #e0e0e0;
+    --body-bg: #121212;
+    --header-bg: rgba(24, 24, 24, 0.85);
+    --card-bg: #1e1e1e;
+    --border-color: #333333;
+    --shadow-color: rgba(0, 0, 0, 0.25);
+}
+
+/* ==========================================================================
+   2. GLOBAL & BASE STYLES
+   ========================================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-family-base);
+    line-height: 1.7;
+    background-color: var(--bg-color, var(--body-bg));
+    color: var(--text-color);
+    transition: background-color 0.3s ease, color 0.3s ease;
+    overflow-x: hidden;
+}
+
+a {
+    color: var(--accent-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--accent-color-darker);
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+section {
+    padding: 6rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    /* Memberi ruang agar konten tidak tertutup header */
+    padding-top: calc(var(--header-height) + 4rem);
+}
+
+section:first-of-type {
+    padding-top: var(--header-height);
+}
+
+
+/* ==========================================================================
+   3. HEADER & NAVIGATION
+   ========================================================================== */
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: var(--header-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border-color);
+    z-index: 1000;
+    transition: background-color 0.3s ease;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    height: var(--header-height);
+}
+
+.logo {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--text-color);
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 2.5rem;
+}
+
+.nav-links li {
+    position: relative;
+    cursor: pointer;
+    font-weight: 500;
+    color: var(--text-color);
+    transition: color 0.3s ease;
+}
+
+.nav-links li:hover {
+    color: var(--accent-color);
+}
+
+.nav-links li::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background-color: var(--accent-color);
+    transition: width 0.3s ease;
+}
+
+.nav-links li:hover::after {
+    width: 100%;
+}
+
+.theme-toggle,
+.hamburger {
+    background: none;
+    border: none;
+    color: var(--text-color);
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.theme-toggle:hover,
+.hamburger:hover {
+    background-color: var(--border-color);
+}
+
+.hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    margin-left: 1rem;
+}
+
+.hamburger .bar {
+    width: 25px;
+    height: 2px;
+    background-color: var(--text-color);
+    transition: all 0.3s ease;
+}
+
+/* ==========================================================================
+   4. OFFCANVAS MOBILE MENU
+   ========================================================================== */
+
+.offcanvas {
+    position: fixed;
+    top: 0;
+    right: -300px;
+    width: min(75vw, 300px);
+    height: 100%;
+    background-color: var(--card-bg);
+    box-shadow: -5px 0 15px var(--shadow-color);
+    transition: right 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
+    z-index: 1001;
+    padding: 2rem 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.offcanvas.active {
+    right: 0;
+}
+
+.offcanvas .close-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    color: var(--text-color);
+    cursor: pointer;
+    padding: 0.5rem;
+}
+
+.offcanvas .nav-links-mobile {
+    list-style: none;
+    margin-top: 4rem;
+}
+
+.offcanvas .nav-links-mobile li {
+    padding: 1rem;
+    font-size: 1.1rem;
+    border-bottom: 1px solid var(--border-color);
+    cursor: pointer;
+    transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+.offcanvas .nav-links-mobile li:hover {
+    color: var(--accent-color);
+    background-color: var(--border-color);
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.35s ease, visibility 0.35s ease;
+}
+
+.overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* ==========================================================================
+   5. HERO SECTION
+   ========================================================================== */
+
+.hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: var(--header-height) 2rem 2rem;
+}
+
+.profile-photo {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-bottom: 1rem;
+    border: 6px solid var(--card-bg);
+    box-shadow: 0 10px 30px var(--shadow-color);
+}
+
+.profile-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.hero h1 {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 700;
+    margin-bottom: .5rem;
+    color: var(--text-color);
+    animation: fadeInUp 0.8s ease-out 0.2s both;
+}
+
+.hero p {
+    font-size: 1.25rem;
+    max-width: 650px;
+    margin-bottom: 2rem;
+    color: var(--text-color);
+    opacity: 0.8;
+    animation: fadeInUp 0.8s ease-out 0.4s both;
+}
+
+.cta-button {
+    background-color: var(--accent-color);
+    color: #fff;
+    padding: 0.8rem 2.5rem;
+    border: 2px solid transparent;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 600;
+    box-shadow: 0 4px 15px rgba(0, 123, 255, 0.2);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    animation: fadeInUp 0.8s ease-out 0.6s both;
+}
+
+.cta-button:hover {
+    background-color: var(--accent-color-darker);
+    transform: translateY(-3px);
+    box-shadow: 0 7px 20px rgba(0, 123, 255, 0.3);
+}
+
+/* ==========================================================================
+   6. GENERAL SECTION STYLES
+   ========================================================================== */
+
+section h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 1rem;
+    position: relative;
+}
+
+/* Decorative underline for section titles */
+section h2::after {
+    content: '';
+    position: absolute;
+    width: 80px;
+    height: 4px;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--accent-color);
+    border-radius: 2px;
+}
+
+.section-content {
+    margin-top: 4rem;
+    /* Jarak dari judul section */
+    padding: 2rem;
+    background-color: var(--card-bg);
+    border-radius: var(--border-radius);
+    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 12px var(--shadow-color);
+    transition: all 0.3s ease;
+}
+
+/* Layout for project cards, skills, etc. */
+.grid-layout {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+/* About section */
+/* ==========================================================================
+   6.5. ABOUT SECTION STYLES
+   ========================================================================== */
+
+.about-content {
+    display: flex;
+    align-items: flex-start;
+    /* Ubah ke flex-start agar teks tidak terlalu meregang */
+    gap: 3rem;
+    margin-top: 4rem;
+    /* Jarak dari judul section */
+}
+
+.about-image {
+    flex-basis: 35%;
+    /* Mengatur lebar kolom gambar */
+    min-width: 280px;
+    position: relative;
+}
+
+.about-image img {
+    width: 100%;
+    border-radius: var(--border-radius);
+    box-shadow: 0 15px 35px var(--shadow-color);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.about-image:hover img {
+    transform: scale(1.03) rotate(-1deg);
+    box-shadow: 0 20px 45px var(--shadow-color);
+}
+
+.about-text {
+    flex-basis: 65%;
+    /* Mengatur lebar kolom teks */
+}
+
+.about-text h3 {
+    font-size: 1.75rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    color: var(--accent-color);
+}
+
+.about-text p {
+    margin-bottom: 1.5rem;
+    line-height: 1.8;
+    opacity: 0.9;
+}
+
+.about-tech {
+    margin-bottom: 2rem;
+}
+
+.tech-list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    /* Membuat 2 kolom */
+    gap: 0.75rem;
+    margin-top: 1rem;
+}
+
+.tech-list li {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 500;
+}
+
+.tech-list li i {
+    color: var(--accent-color);
+    width: 20px;
+    height: 20px;
+}
+
+.about-content .cta-button {
+    color: #fff;
+    display: inline-flex;
+    /* Agar ikon dan teks sejajar */
+    align-items: center;
+    justify-content: center;
+    animation: none;
+    /* Menghilangkan animasi fadeInUp agar tidak aneh */
+}
+
+/* ==========================================================================
+   6.6. SKILLS SECTION STYLES
+   ========================================================================== */
+
+.skills-container {
+    margin-top: 4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+.skill-category {
+    background-color: var(--card-bg);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 12px var(--shadow-color);
+}
+
+.skill-category h3 {
+    text-align: center;
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    font-weight: 600;
+}
+
+.skills-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    /* INI KUNCINYA: Memusatkan semua item secara horizontal */
+    gap: 1.5rem;
+}
+
+.skill-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem;
+    flex-basis: 100px;
+    /* Memberi lebar dasar pada setiap item */
+    border-radius: var(--border-radius);
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.skill-item:hover {
+    transform: translateY(-5px);
+    background-color: var(--border-color);
+}
+
+.skill-item i {
+    font-size: 3.5rem;
+    /* Ukuran ikon */
+    line-height: 1;
+    /* Memastikan ikon tidak menambah tinggi aneh */
+}
+
+.skill-item span {
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-align: center;
+}
+
+@media (max-width: 480px) {
+    .skills-grid {
+        grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+        gap: 1rem;
+    }
+
+    .skill-item i {
+        font-size: 3rem;
+    }
+}
+
+/* Penyesuaian untuk layar lebih kecil */
+@media (max-width: 992px) {
+    .about-content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .about-image {
+        margin-bottom: 2rem;
+        max-width: 350px;
+    }
+
+    .tech-list {
+        justify-content: center;
+        text-align: left;
+        /* Agar list tetap rata kiri */
+        display: inline-grid;
+    }
+}
+
+/* ==========================================================================
+   6.7. PROJECTS SECTION STYLES
+   ========================================================================== */
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+    margin-top: 4rem;
+}
+
+.project-card {
+    background-color: var(--card-bg);
+    border-radius: var(--border-radius);
+    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 12px var(--shadow-color);
+    overflow: hidden;
+    /* Penting agar gambar tidak keluar dari border-radius */
+    display: flex;
+    /* Kunci #1 agar semua card sama tinggi */
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px var(--shadow-color);
+}
+
+.project-image {
+    height: 220px;
+    overflow: hidden;
+}
+
+.project-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Memastikan gambar mengisi area tanpa distorsi */
+    transition: transform 0.4s ease;
+}
+
+.project-card:hover .project-image img {
+    transform: scale(1.05);
+}
+
+.project-info {
+    padding: 1.5rem;
+    display: flex;
+    /* Kunci #2 agar semua card sama tinggi */
+    flex-direction: column;
+    flex-grow: 1;
+    /* Memaksa bagian ini untuk mengisi sisa ruang vertikal */
+}
+
+.project-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+}
+
+.project-description {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    opacity: 0.9;
+    flex-grow: 1;
+    /* Memastikan deskripsi mengisi ruang sebelum link */
+}
+
+.project-tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.project-tech span {
+    background-color: var(--border-color);
+    color: var(--accent-color);
+    font-size: 0.75rem;
+    font-weight: 500;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+}
+
+.project-links {
+    margin-top: auto;
+    /* Mendorong link ke bagian paling bawah card */
+    display: flex;
+    gap: 1rem;
+}
+
+.project-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    font-weight: 500;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.project-link:hover {
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
+    color: #fff;
+}
+
+/* ==========================================================================
+   6.8. EXPERIENCE (TIMELINE) SECTION STYLES
+   ========================================================================== */
+
+.timeline {
+    position: relative;
+    max-width: 900px;
+    margin: 4rem auto;
+}
+
+/* Garis vertikal di tengah timeline */
+.timeline::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 2px;
+    background-color: var(--border-color);
+    transform: translateX(-50%);
+}
+
+.timeline-item {
+    position: relative;
+    width: 50%;
+    padding: 0 2rem;
+    margin-bottom: 2rem;
+}
+
+/* Mengatur posisi item di kiri dan kanan */
+.timeline-item:nth-child(odd) {
+    left: 0;
+    text-align: right;
+}
+
+.timeline-item:nth-child(even) {
+    left: 50%;
+}
+
+/* Lingkaran (dot) pada garis timeline */
+.timeline-item::after {
+    content: '';
+    position: absolute;
+    top: 20px;
+    /* Sesuaikan agar sejajar dengan judul */
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: var(--accent-color);
+    border: 3px solid var(--card-bg);
+    z-index: 1;
+    /* Agar di atas garis */
+}
+
+.timeline-item:nth-child(odd)::after {
+    right: -10px;
+    /* Posisi dot untuk item kiri */
+    transform: translateX(50%);
+}
+
+.timeline-item:nth-child(even)::after {
+    left: -10px;
+    /* Posisi dot untuk item kanan */
+    transform: translateX(-50%);
+}
+
+.timeline-content {
+    position: relative;
+    padding: 1.5rem;
+    background-color: var(--card-bg);
+    border-radius: var(--border-radius);
+    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 12px var(--shadow-color);
+}
+
+/* Panah kecil yang menunjuk ke garis timeline */
+.timeline-content::before {
+    content: '';
+    position: absolute;
+    top: 18px;
+    width: 0;
+    height: 0;
+    border-style: solid;
+}
+
+.timeline-item:nth-child(odd) .timeline-content::before {
+    right: -10px;
+    /* Panah untuk item kiri */
+    border-width: 10px 0 10px 10px;
+    border-color: transparent transparent transparent var(--border-color);
+}
+
+.timeline-item:nth-child(even) .timeline-content::before {
+    left: -10px;
+    /* Panah untuk item kanan */
+    border-width: 10px 10px 10px 0;
+    border-color: transparent var(--border-color) transparent transparent;
+}
+
+
+.timeline-date {
+    display: inline-block;
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 0.25rem 0.75rem;
+    background-color: var(--accent-color);
+    color: #fff;
+    border-radius: 20px;
+    margin-bottom: 0.75rem;
+}
+
+.timeline-content h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.25rem;
+}
+
+.timeline-company {
+    font-size: 1rem;
+    font-style: italic;
+    opacity: 0.8;
+    margin-bottom: 1rem;
+}
+
+.timeline-content ul {
+    list-style-position: inside;
+    padding-left: 0.5rem;
+}
+
+.timeline-item:nth-child(odd) .timeline-content ul {
+    text-align: left;
+    /* Pastikan list tetap rata kiri */
+}
+
+
+/* ==========================================================================
+   TIMELINE RESPONSIVE STYLES (MOBILE-FRIENDLY)
+   ========================================================================== */
+@media (max-width: 768px) {
+
+    /* Pindahkan garis ke sisi kiri */
+    .timeline::before {
+        left: 10px;
+    }
+
+    /* Buat semua item menempati lebar penuh dan berada di kanan garis */
+    .timeline-item {
+        width: 100%;
+        left: 0 !important;
+        padding-left: 40px;
+        padding-right: 0;
+        text-align: left !important;
+    }
+
+    /* Posisikan ulang semua dot ke garis kiri */
+    .timeline-item:nth-child(odd)::after,
+    .timeline-item:nth-child(even)::after {
+        left: -10px;
+        transform: translateX(-50%);
+    }
+
+    /* Arahkan semua panah ke kiri */
+    .timeline-item:nth-child(odd) .timeline-content::before,
+    .timeline-item:nth-child(even) .timeline-content::before {
+        left: -10px;
+        right: auto;
+        border-width: 10px 10px 10px 0;
+        border-color: transparent var(--border-color) transparent transparent;
+    }
+}
+
+/* ==========================================================================
+   6.9. CONTACT SECTION STYLES
+   ========================================================================== */
+
+.contact-container {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 3rem;
+    margin-top: 4rem;
+    padding: 2rem;
+    background-color: var(--card-bg);
+    border-radius: var(--border-radius);
+    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 12px var(--shadow-color);
+}
+
+.contact-info h3 {
+    font-size: 1.75rem;
+    margin-bottom: 1rem;
+}
+
+.contact-info p {
+    margin-bottom: 2rem;
+    opacity: 0.9;
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.info-item i {
+    color: var(--accent-color);
+}
+
+.contact-ctas {
+    margin-top: .3rem;
+}
+
+.contact-ctas .cta-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    width: 100%;
+    justify-content: center;
+    animation: none;
+}
+
+.cta-button.whatsapp {
+    background-color: #25D366;
+    border-color: #25D366;
+}
+
+.cta-button.whatsapp:hover {
+    background-color: #1DAA50;
+    border-color: #1DAA50;
+    color: #fff;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    background-color: var(--body-bg);
+    color: var(--text-color);
+    font-size: 1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.2);
+}
+
+.contact-form .cta-button {
+    width: 100%;
+    animation: none;
+}
+
+@media (max-width: 900px) {
+    .contact-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+/* ==========================================================================
+   7. FOOTER STYLES
+   ========================================================================== */
+
+footer {
+    background-color: var(--card-bg);
+    padding: 3rem 2rem;
+    text-align: center;
+    border-top: 1px solid var(--border-color);
+}
+
+.footer-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.footer-brand {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.footer-social {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.footer-social a {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: var(--border-color);
+    color: var(--text-color);
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+}
+
+.footer-social a:hover {
+    background-color: var(--accent-color);
+    color: #fff;
+    transform: translateY(-3px);
+}
+
+.footer-copy {
+    opacity: 0.7;
+    font-size: 0.9rem;
+}
+
+/* ==========================================================================
+   8. ANIMATIONS
+   ========================================================================== */
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* ==========================================================================
+   9. RESPONSIVE MEDIA QUERIES
+   ========================================================================== */
+
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+
+    section {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    .hero {
+        min-height: 90vh;
+    }
+
+    .hero h1 {
+        font-size: 2.2rem;
+    }
+
+    .hero p {
+        font-size: 1.1rem;
+    }
+
+    section h2 {
+        font-size: 2rem;
+    }
+}
