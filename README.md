@@ -34,7 +34,7 @@ Berikut beberapa proyek penting yang pernah saya kerjakan:
 ---
 
 ## 📂 Struktur Repositori Ini
-
+/
 ├── index.html
 ├── resume.html (atau folder resume)
 ├── projects/
