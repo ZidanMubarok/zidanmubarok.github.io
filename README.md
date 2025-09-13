@@ -29,8 +29,7 @@ Berikut beberapa proyek penting yang pernah saya kerjakan:
 | Nama Projek | Deskripsi Singkat | Tech Stack | Link |
 |-------------|-------------------|------------|------|
 | Portofolio Pribadi | Website ini: profil saya, daftar projek, kontak | HTML, CSS, JavaScript | [zidanmubarok.github.io](https://zidanmubarok.github.io/) |
-| Website Manajemen Pabrik Air Minum | Website ini di gunakan untuk manajemen pemasukan dan pengeluaran pabrik | Codeigniter 4, Database MySQL, Bootstrap |  |
-| (Nama Projek 3) | ... | ... | ... |
+| Website Manajemen Pabrik Air Minum | Website ini di gunakan untuk manajemen pemasukan dan pengeluaran pabrik | Codeigniter 4, Database MySQL, Bootstrap | Masih belum diupload|
 
 ---
 
@@ -46,4 +45,3 @@ Berikut beberapa proyek penting yang pernah saya kerjakan:
 │ ├── js/
 │ └── images/
 └── README.md
-
